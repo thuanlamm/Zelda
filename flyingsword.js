@@ -6,19 +6,19 @@ function FlyingSword(game, x, y, direction) {
 
     switch (direction) {
         case 37: //left
-            this.setBox(0, -5, 21, 6);
+            this.setBox(5, 4, 26, 15);
             this.dx = -1;
             break;
         case 38: //up
-            this.setBox(-5, 0, 6, 21);
+            this.setBox(5, 4, 16, 28);
             this.dy = -1;
             break;
         case 39: //right
-            this.setBox(-21, -5, 0, 6);
+            this.setBox(15, 4, 36, 15);
             this.dx = 1;
             break;
         case 40: //down
-            this.setBox(-5, -21, 6, 0);
+            this.setBox(5, 13, 16, 38);
             this.dy = 1;
             break;
     }

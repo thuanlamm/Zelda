@@ -152,6 +152,26 @@ Entity.prototype.collide = function (other) {
     return i;
 }
 
+//Entity.prototype.collide = function (other) {
+//    var i = 0;
+//    var iLR = 0;
+//    var iTB = 0;
+//    if (other instanceof Entity) {
+//        iLR = this.collideLeftRight(other);
+//        iTB = this.collideTopBottom(other);
+//    }
+//    if (iLR + iTB !== 0) { //colided
+//        if (iLR === 0) { // not left right
+//            i = iTB;  
+//        } else if (iTB === 0) { //not top bottom
+//            i = iLR;
+//        } else { // 2 ways
+//            i = (Math.abs(this.x - other.x) > Math.abs(this.y - other.y)) ? iLR : iTB;
+//        }
+//    }
+//    return i;
+//}
+
 Entity.prototype.update = function () {
 }
 

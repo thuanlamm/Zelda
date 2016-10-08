@@ -50,9 +50,8 @@ function getXandY(e) {
 }
 
 //------------------------------------------------------------------------------------
-function GameEngine(socket) {
+function GameEngine() {
     this.index = 1;
-    this.socket = socket;
     this.entities = [];
     this.blocks = [];
     this.items = [];
@@ -97,8 +96,9 @@ function GameEngine(socket) {
         this.items.push(false);
     }
     this.currentID = 0;
-    this.loadGame(0);
+    this.loadGame(this.currentID);
 
+    this.enteringDirection = 37;
     this.background = new Background(this, 512, 320, 7, 7, 16, 16);
     this.sword = new Sword(this)
     this.flyingSword = null;
@@ -249,8 +249,6 @@ GameEngine.prototype.startInput = function () {
             that.space = true;
         } 
         if (String.fromCharCode(e.which) === ' ') that.space = true;
-        if (String.fromCharCode(e.which).toUpperCase() == "S") that.saveState(that.socket, that.index);
-        if (String.fromCharCode(e.which).toUpperCase() == "L") that.loadState(that.socket, that.index);
         if (String.fromCharCode(e.which).toUpperCase() == "M") that.mPressed = true;
         if (String.fromCharCode(e.which).toUpperCase() == "B") that.showOutlines = !that.showOutlines;
         if (String.fromCharCode(e.which).toUpperCase() == "P") {
@@ -344,7 +342,7 @@ GameEngine.prototype.update = function () {
         if (this.flyingSword && this.flyingSword.removeFromWorld) {
             this.flyingSword = null;
         }
-    } else { //game over
+    } else {
         if (this.click) {
             if (this.click.x >= 197 && this.click.x <= 278 && this.click.y >= 181 & this.click.y <= 211) {
                 this.gameOver = false;
@@ -440,19 +438,3 @@ GameEngine.prototype.loop = function () {
     this.draw();
 }
 
-GameEngine.prototype.saveState = function (socket, state) {
-    console.log("emit save");
-    socket.emit('save', {
-        studentname: "Thuan Lam",
-        statename: state,
-        data: "Hello World!"
-    });
-};
-
-GameEngine.prototype.loadState = function (socket, state) {
-    console.log("emit load");
-    socket.emit('load', {
-        studentname: "Thuan Lam",
-        statename: state
-    });
-}

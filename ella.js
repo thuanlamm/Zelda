@@ -68,7 +68,7 @@ EllaTheRoseFairy.prototype.update = function () {
             this.timer--;
         }
     } else {
-        this.timer--;
+        this.timer--;;
     }
     Entity.prototype.update.call(this);
 }

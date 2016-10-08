@@ -73,26 +73,8 @@ ASSET_MANAGER.downloadAll(function () {
     var ctx = canvas.getContext('2d');
     var canvas2 = document.getElementById('panel');
     var ctx2 = canvas2.getContext('2d');
-    var socket = io.connect("http://76.28.150.193:8888");
 
-    var gameEngine = new GameEngine(socket);
+    var gameEngine = new GameEngine();
     gameEngine.init(ctx, ctx2);
     gameEngine.start();
-
-    socket.on("save", function (data) {
-        console.log("socket.on_save ");
-    });
-
-    socket.on("load", function (data) {
-        console.log("socket.on_load");
-        console.log("getting data: ")
-        console.log(data.data);
-        //for (var i = 0; i < data.entities.length; i++) {
-        //    gameEngine.entities = [];
-        //    ent = data.entities[i];
-        //    name, x, y, mass, color
-        //    ent = new Star(ent.name, ent.x, ent.y, ent.mass, ent.color);
-        //    engine.addEntity(ent);
-        //}
-    });
 });

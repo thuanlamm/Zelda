@@ -5,13 +5,9 @@ function addMonster(game, mapNum) {
 }
 
 addMonster.prototype.load = function () {
-    //document.getElementById("zombiesound").pause();
+    document.getElementById("zombiesound").pause();
     var fireflySpawnRate = 25;
-    //this.game.entities = [];
-    for (var i = 0; i < this.game.entities.length; i++) {
-        this.game.entities[i].removeFromWorld = true;
-    }
-
+    this.game.entities = [];
     switch (this.mapNum) {
         case 0:
 //            this.game.addEntity(new Wizard(this.game, 400, 100));
@@ -171,7 +167,7 @@ addMonster.prototype.load = function () {
             }
 
             this.game.addEntity(new Zombie(this.game, 200, 115));
-            this.game.addEntity(new Zombie(this.game, 400, 270));
+            this.game.addEntity(new Zombie(this.game, 400, 275));
             for (var j = 0; j < 3; j++) {
                 var x = Math.floor(Math.random() * 312 + 100);
                 var y = Math.floor(Math.random() * 120 + 100);
